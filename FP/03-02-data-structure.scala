@@ -1,3 +1,5 @@
+// https://github.com/fpinscala/fpinscala/blob/master/answers/src/main/scala/fpinscala/datastructures/List.scala
+
 sealed trait MyList[+A] // `MyList` data type, parameterized on a type, `A`
 case object Nil extends MyList[Nothing] // A `MyList` data constructor representing the empty MyList
 /* Another data constructor, representing nonempty MyLists. Note that `tail` is another `MyList[A]`,
@@ -17,14 +19,29 @@ object MyList { // `MyList` companion object. Contains functions for creating an
     case Cons(x,xs) => x * product(xs)
   }
 
+  // The computation is going from the right
   def foldRight[A, B](list: MyList[A], nilValue: B)(f: (A, B) => B): B =
     list match {
       case Nil => nilValue
       case Cons(x, xs) => f(x, foldRight(xs, nilValue)(f))
     }
 
-  def length[A](list: MyList[A]): Int =
+  def lengthRight[A](list: MyList[A]): Int =
     foldRight(list, 0)((_x, y) => 1 + y)
+
+  @annotation.tailrec
+  def foldLeft[A, B](list: MyList[A], accumulator: B)(f: (B, A) => B): B =
+    list match {
+      case Nil => accumulator
+      case Cons(x, xs) => foldLeft(xs, f(accumulator, x))(f)
+    }
+
+  def lenghtLeft[A](list: MyList[A]): Int =
+    foldLeft(list, 0)((accumulator, _element) => 1 + accumulator)
+
+  def sumLeft(list: MyList[Int]): Int = foldLeft(list, 0)(_ + _)
+
+  def productLeft(list: MyList[Double]): Double = foldLeft(list, 1.0)(_ * _)
 
   def apply[A](as: A*): MyList[A] = // Variadic function syntax
     if (as.isEmpty) Nil
@@ -109,7 +126,17 @@ object Runner {
     val initTesting = MyList.init(otherList)
     println(otherList)
 
-    val lengthTesting = MyList.length(aList)
-    println(lengthTesting)
+    val lengthRightTesting = MyList.lengthRight(aList)
+    println(lengthRightTesting)
+
+    val lengthLeftTesting = MyList.lenghtLeft(aList)
+    println(lengthLeftTesting)
+
+    val sumLeftTesting = MyList.sumLeft(aList)
+    println(sumLeftTesting)
+
+    val doubles = MyList(1.0, 3.0, 4.0)
+    val productLeftTesting = MyList.productLeft(doubles)
+    println(productLeftTesting)
   }
 }
