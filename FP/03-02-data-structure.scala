@@ -17,6 +17,15 @@ object MyList { // `MyList` companion object. Contains functions for creating an
     case Cons(x,xs) => x * product(xs)
   }
 
+  def foldRight[A, B](list: MyList[A], nilValue: B)(f: (A, B) => B): B =
+    list match {
+      case Nil => nilValue
+      case Cons(x, xs) => f(x, foldRight(xs, nilValue)(f))
+    }
+
+  def length[A](list: MyList[A]): Int =
+    foldRight(list, 0)((_x, y) => 1 + y)
+
   def apply[A](as: A*): MyList[A] = // Variadic function syntax
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
@@ -99,5 +108,8 @@ object Runner {
 
     val initTesting = MyList.init(otherList)
     println(otherList)
+
+    val lengthTesting = MyList.length(aList)
+    println(lengthTesting)
   }
 }
