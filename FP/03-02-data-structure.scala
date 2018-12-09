@@ -43,6 +43,31 @@ object MyList { // `MyList` companion object. Contains functions for creating an
 
   def productLeft(list: MyList[Double]): Double = foldLeft(list, 1.0)(_ * _)
 
+  def reverse[A](list: MyList[A]): MyList[A] = {
+    val emptyList: MyList[A] = MyList[A]()
+    foldLeft(list, emptyList)((acc, element) => Cons(element, acc))
+  }
+
+  def appendLeft[A](list1: MyList[A], list2: MyList[A]): MyList[A] =
+    foldLeft(list1, list2)((acc, element) => Cons(element, acc))
+
+  def addOne(list: MyList[Int]): MyList[Int] =
+    // foldLeft(list, MyList[Int]())((acc, element) => Cons(element + 1, acc))
+    foldRight(list, MyList[Int]())((head, tail) => Cons(head + 1, tail))
+
+  def map[A, B](list: MyList[A])(f: A => B): MyList[B] =
+    foldRight(list, MyList[B]())((head, tail) => Cons(f(head), tail))
+
+  def filter[A](list: MyList[A])(f: A => Boolean): MyList[A] = {
+    // val filtering = (head: A, tail: MyList[A]) => f(head) match {
+    //   case true => Cons(head, tail)
+    //   case false => tail
+    // }
+
+    // foldRight(list, Nil:MyList[A])(filtering)
+    foldRight(list, Nil:MyList[A])((head, tail) => if (f(head)) Cons(head, tail) else tail)
+  }
+
   def apply[A](as: A*): MyList[A] = // Variadic function syntax
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
@@ -138,5 +163,22 @@ object Runner {
     val doubles = MyList(1.0, 3.0, 4.0)
     val productLeftTesting = MyList.productLeft(doubles)
     println(productLeftTesting)
+
+    val reverseTesting = MyList.reverse(doubles)
+    println(reverseTesting)
+
+    val wowList = MyList("w", "o", "w")
+    val booList = MyList("b", "o", "o")
+    val appendLeftTesting = MyList.appendLeft(wowList, booList)
+    println(appendLeftTesting)
+
+    val addOneTesting = MyList.addOne(aList)
+    println(addOneTesting)
+
+    val mapTesting = MyList.map(aList)(_ + 10)
+    println(mapTesting)
+
+    val filterTesting = MyList.filter(aList)(_ % 2 == 0)
+    println(filterTesting)
   }
 }
