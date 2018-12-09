@@ -27,21 +27,32 @@ object MyList { // `MyList` companion object. Contains functions for creating an
       case whatever => Nil
     }
 
-  // val x = MyList(1,2,3,4,5) match {
-  //   case Cons(x, Cons(2, Cons(4, _))) => x
-  //   case Nil => 42
-  //   case Cons(x, Cons(y, Cons(3, Cons(4, _)))) => x + y
-  //   case Cons(h, t) => h + sum(t)
-  //   case _ => 101
-  // }
+  val patternMatch = MyList(1,2,3,4,5) match {
+    case Cons(x, Cons(2, Cons(4, _))) => x
+    case Nil => 42
+    case Cons(x, Cons(y, Cons(3, Cons(4, _)))) => x + y
+    case Cons(h, t) => h + sum(t)
+    case _ => 101
+  }
+
+  def setHead[A](newHead: A, list: MyList[A]): MyList[A] =
+    list match {
+      case Cons(_head, tail) => Cons(newHead, tail)
+      case _ => list
+    }
 }
 
 object Runner {
   def main(args: Array[String]) : Unit = {
-    // val x = Cons("a", Cons("b", Nil))
+    val testingCons = Cons("a", Cons("b", Nil))
+
+    println(MyList.patternMatch)
 
     val aList = MyList(1,2,3,4)
-    val tailingList = MyList.tail(aList)
-    println(tailingList)
+    val tailTesting = MyList.tail(aList)
+    println(tailTesting)
+
+    val setHeadTesting = MyList.setHead(42, aList)
+    println(setHeadTesting)
   }
 }
