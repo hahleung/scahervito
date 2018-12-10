@@ -1,6 +1,13 @@
-## Scala - learning notes
+# Eclair Scala :zap:
 
-#### Factorial example
+## Run scripts from terminal
+
+Download Scala binaries, move them somewhere like `/usr/bin/share` then add env variable to point towards this location.
+
+- just interpret: `scala myScript.scala`
+- compile and interpret: `scalac myScript.scala; scala myScript`
+
+## Factorial example
 
 Run `scala` interpreter and launch:
 
