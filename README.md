@@ -7,6 +7,17 @@ Download Scala binaries, move them somewhere like `/usr/bin/share` then add env 
 - just interpret: `scala myScript.scala`
 - compile and interpret: `scalac myScript.scala; scala myScript`
 
+## Run Codewars tests
+
+The `sbt` and `scala` versions are respectively sealed here:
+- `codewars/project/build.properties`
+- `codewars/build.sbt`
+
+```
+cd codewars
+sbt test
+```
+
 ## Factorial example
 
 Run `scala` interpreter and launch:
