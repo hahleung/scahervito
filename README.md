@@ -16,7 +16,10 @@ The `sbt` and `scala` versions are respectively sealed here:
 ```
 cd codewars
 sbt test
+sbt "test:testOnly *CountPositivesSumNegativesTest"
 ```
+
+Note: Project has been generated following this [guide](https://docs.scala-lang.org/getting-started-sbt-track/testing-scala-with-sbt-on-the-command-line.html).
 
 ## Factorial example
 
