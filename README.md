@@ -19,6 +19,15 @@ sbt test
 sbt "test:testOnly *CountPositivesSumNegativesTest"
 ```
 
+or:
+```
+(cd codewars; sbt "test:testOnly *CountPositivesSumNegativesTest")
+(cd codewars; sbt "test:testOnly *SolTest")
+(cd codewars; sbt "test:testOnly *RemoveFirstAndLastCharactersSpec")
+(cd codewars; sbt "test:testOnly *SmallestIntegersFinderSpec")
+(cd codewars; sbt "test:testOnly *GrasshopperTest")
+```
+
 Note: Project has been generated following this [guide](https://docs.scala-lang.org/getting-started-sbt-track/testing-scala-with-sbt-on-the-command-line.html).
 
 ## Factorial example
