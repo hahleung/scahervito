@@ -2,7 +2,7 @@
 
 import scala.{Option => _, Either => _, Left => _, Right => _, _} // hide std library `Option` and `Either`, since we are writing our own in this chapter
 
-sealed trait Either[+E,+A] {
+sealed trait Either[+E, +A] {
   def map[B](f: A => B): Either[E, B] =
     this match {
       case Right(content) => Right(f(content))
@@ -27,13 +27,16 @@ sealed trait Either[+E,+A] {
       case (_, Left(expection)) => Left(expection)
       case (Left(expection), _) => Left(expection)
     }
-    // for { a <- this; b1 <- b } yield f(a,b1)
+
+  // for { a <- this; b1 <- b } yield f(a,b1)
 }
-case class Left[+E](value: E) extends Either[E,Nothing]
-case class Right[+A](value: A) extends Either[Nothing,A]
+
+case class Left[+E](value: E) extends Either[E, Nothing]
+
+case class Right[+A](value: A) extends Either[Nothing, A]
 
 object Either {
-  def sequence[E,A](list: List[Either[E,A]]): Either[E,List[A]] = {
+  def sequence[E, A](list: List[Either[E, A]]): Either[E, List[A]] = {
     def getList(eitherList: Either[E, List[A]]): List[A] =
       eitherList match {
         case Right(list) => list
@@ -54,7 +57,7 @@ object Either {
     }
   }
 
-  def traverse[E,A,B](list: List[A])(f: A => Either[E, B]): Either[E, List[B]] = {
+  def traverse[E, A, B](list: List[A])(f: A => Either[E, B]): Either[E, List[B]] = {
     def getList(eitherList: Either[E, List[B]]): List[B] =
       eitherList match {
         case Right(list) => list
@@ -84,16 +87,21 @@ object Either {
 
   def safeDiv(x: Int, y: Int): Either[Exception, Int] =
     try Right(x / y)
-    catch { case e: Exception => Left(e) }
+    catch {
+      case e: Exception => Left(e)
+    }
 
   def Try[A](a: => A): Either[Exception, A] =
     try Right(a)
-    catch { case e: Exception => Left(e) }
+    catch {
+      case e: Exception => Left(e)
+    }
 }
 
 object Runner {
   // Just a boilerplate to help
   def displayTitle(title: String): Unit = println("\n\t" + title)
+
   def assert(subject: Any, expected: Any): Unit = {
     val result = subject == expected
     val display =
@@ -104,7 +112,7 @@ object Runner {
     println(display)
   }
 
-  def main(args: Array[String]) : Unit = {
+  def main(args: Array[String]): Unit = {
     val eitherRight = Right("wow")
     val eitherLeft = Left("shit")
     val eitherDefault = Right("WOW WOW")

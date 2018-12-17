@@ -20,7 +20,7 @@ object Runner {
     println(display)
   }
 
-  def main(args: Array[String]) : Unit = {
+  def main(args: Array[String]): Unit = {
     val myList = List(1.0, 2.0, 3.0, 4.0)
     val emptyList = List()
 
