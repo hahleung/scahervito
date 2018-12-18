@@ -7,14 +7,14 @@ class MaximumLengthDifferenceTest extends FlatSpec with Matchers {
   val result = 13
 
   s"mxdiflg($a1, $a2)" should "return 13" in {
-    MaximumLengthDifference.mxdiflg(a1, a2) should be (13)
+    MaximumLengthDifference.mxdiflg(a1, a2) should be(13)
   }
 
   "First array is empty" should "return -1" in {
-    MaximumLengthDifference.mxdiflg(List(), List("lol")) should be (-1)
+    MaximumLengthDifference.mxdiflg(List(), List("lol")) should be(-1)
   }
 
   "Second array is empty" should "return -1" in {
-    MaximumLengthDifference.mxdiflg(List("lol"), List()) should be (-1)
+    MaximumLengthDifference.mxdiflg(List("lol"), List()) should be(-1)
   }
 }

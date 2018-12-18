@@ -14,7 +14,7 @@ class CountPositivesSumNegativesTest extends FlatSpec with Matchers {
   tests.foreach {
     case (input, expected) =>
       s"""countPositivesSumNegatives(Array(${input.mkString(", ")}))""" should s"return $expected" in {
-        CountPositivesSumNegatives.countPositivesSumNegatives(input) should be (expected)
+        CountPositivesSumNegatives.countPositivesSumNegatives(input) should be(expected)
       }
   }
 }

@@ -14,7 +14,7 @@ class SortArrayTest extends FlatSpec with Matchers {
   tests.foreach {
     case (expected, input) =>
       s"sortByLength(Array(${input.mkString(",")}))" should s"return Array(${expected.mkString(",")})" in {
-        SortArray.sortByLength(input) should be (expected)
+        SortArray.sortByLength(input) should be(expected)
       }
   }
 }

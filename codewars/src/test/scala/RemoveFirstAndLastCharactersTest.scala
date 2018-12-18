@@ -1,7 +1,6 @@
 import org.scalatest._, prop._
 
-class RemoveFirstAndLastCharactersSpec extends FunSuite with PropertyChecks with Matchers {
-
+class RemoveFirstAndLastCharactersTest extends FunSuite with PropertyChecks with Matchers {
   import RemoveFirstAndLastCharacters.removeChars
 
   val fixedTests = Table[String, String](
@@ -12,5 +11,9 @@ class RemoveFirstAndLastCharactersSpec extends FunSuite with PropertyChecks with
     ("place", "lac"),
   )
 
-  test("Fixed tests") { forAll(fixedTests) { removeChars(_) shouldBe _ } }
+  test("Fixed tests") {
+    forAll(fixedTests) {
+      removeChars(_) shouldBe _
+    }
+  }
 }

@@ -11,7 +11,7 @@ class RemovingElementsTest extends FlatSpec with Matchers {
   tests.foreach {
     case (input, expected) =>
       s"removeEveryOther($input)" should s"return $expected" in {
-        RemovingElements.removeEveryOther(input) should be (expected)
+        RemovingElements.removeEveryOther(input) should be(expected)
       }
   }
 }

@@ -12,12 +12,14 @@ class MovieTest extends FlatSpec {
 }
 
 object MovieTest {
-    private def testing(card: Int, ticket: Int, perc: Double, expect: Int): Unit = {
-        println("Testing: " + card +", " + ticket + ", " + perc)
-        val actual: Int = Movie.movie(card, ticket, perc)
-        println("Actual: " + actual)
-        println("Expect: " + expect)
-        println("*")
-        assertResult(expect){actual}
+  private def testing(card: Int, ticket: Int, perc: Double, expect: Int): Unit = {
+    println("Testing: " + card + ", " + ticket + ", " + perc)
+    val actual: Int = Movie.movie(card, ticket, perc)
+    println("Actual: " + actual)
+    println("Expect: " + expect)
+    println("*")
+    assertResult(expect) {
+      actual
     }
+  }
 }

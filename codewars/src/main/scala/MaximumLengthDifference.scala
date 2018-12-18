@@ -13,14 +13,14 @@ object MaximumLengthDifference {
     }
   }
 
-  def findMaxLengthDifference(a1: List[String], a2: List[String]): Int = {
+  private def findMaxLengthDifference(a1: List[String], a2: List[String]): Int = {
     val (minA1, maxA1) = getMinAndMax(a1)
     val (minA2, maxA2) = getMinAndMax(a2)
 
     (maxA1 - minA2) max (maxA2 - minA1)
   }
 
-  def getMinAndMax(list: List[String]): (Int, Int) = {
+  private def getMinAndMax(list: List[String]): (Int, Int) = {
     val firstElement = list.head.size
     val seed = (firstElement, firstElement)
     val foldingFunction = (minMax: (Int, Int), element: String) =>
@@ -29,3 +29,18 @@ object MaximumLengthDifference {
     list.foldLeft(seed)(foldingFunction)
   }
 }
+
+//object Kata {
+//
+//  def mxdiflg(a1: List[String], a2: List[String]): Int =
+//    (for { x <- a1; y <- a2 } yield (y.size - x.size).abs) match { case Nil => -1 case l => l.max }
+//}
+
+//object Kata {
+//  def mxdiflg(a1: List[String], a2: List[String]): Int = {
+//    if (a1.isEmpty || a2.isEmpty) return -1
+//
+//    val List(l1, l2) = List(a1, a2).map(_.map(_.length))
+//    List(l1.max - l2.min, l1.min - l2.max).map(Math.abs(_)).max
+//  }
+//}
