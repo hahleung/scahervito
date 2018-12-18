@@ -52,6 +52,7 @@ trait Stream[+A] {
     }
 
   def forAll(p: A => Boolean): Boolean =
+    foldRight(true)((a, b) => p(a) && b)
 
   // def headOption: Option[A] = ???
 
@@ -130,8 +131,8 @@ object Runner {
     assert(myStream.takeWhile(isLowerThan3).toList, List(1, 2))
 
     displayTitle("FOR ALL")
-    assert(myEmptyStream.forAll(isEven).toList, false)
-    assert(myStream.forAll(isEven).toList, false)
-    assert(myStream.forAll(isLowerThan4).toList, true)
+    assert(myEmptyStream.forAll(isEven), true)
+    assert(myStream.forAll(isEven), false)
+    assert(myStream.forAll(isLowerThan4), true)
   }
 }
