@@ -9,7 +9,10 @@ class YouAreASquareTest extends FlatSpec with Matchers {
     (3, false),
     (4, true),
     (25, true),
-    (26, false)
+    (26, false),
+    (154, false),
+    (88, false),
+    (118, false)
   )
 
   tests.foreach {
