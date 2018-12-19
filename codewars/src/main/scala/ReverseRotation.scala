@@ -29,6 +29,8 @@ object ReverseRotation {
   }
 }
 
+//`- 48` is super clumsy
+//It's pretty concise, as strings are the only transformed primitive
 //object RevRot {
 //  def revRot(strng: String, sz: Int): String = {
 //    if (sz <= 0 || sz > strng.length) "" else {
@@ -39,7 +41,9 @@ object ReverseRotation {
 //    }
 //  }
 //}
-//
+
+//Good and concise, same as above only strings are manipulated
+//However the code is not really super readable...
 //object RevRot {
 //  def revRot(strng: String, sz: Int): String = iter(strng, sz, "")
 //

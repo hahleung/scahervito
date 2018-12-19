@@ -18,6 +18,9 @@ object Rotations {
   }
 }
 
+//The rorations permutations technique is interesting and concise
+//However, it's far from being efficient in the case of huge `string`
+//Not sure about this one, but there is no early return in the checking
 //object Rotations {
 //  def containAllRots(strng: String, arr: List[String]): java.lang.Boolean = {
 //    val len = strng.length();
@@ -26,12 +29,15 @@ object Rotations {
 //  }
 //}
 
+//The syntax sugar is a close to diabete - same comment, all permutations are generated
 //object Rotations {
 //  def containAllRots(strng: String, arr: List[String]) = {
 //    strng.scanLeft(strng)((s,_) => s.tail :+ s.head).forall(arr.contains)
 //  }
 //}
 
+//Another way to generate all permutations
+//Going to the set from the array is not understandable
 //object Rotations {
 //  def containAllRots(s: String, arr: List[String]): java.lang.Boolean = {
 //    var sSet = arr.toSet
