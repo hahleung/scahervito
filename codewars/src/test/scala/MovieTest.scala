@@ -8,6 +8,8 @@ class MovieTest extends FlatSpec {
   it should "pass basic tests" in {
     testing(500, 15, 0.9, 43)
     testing(100, 10, 0.95, 24)
+    testing(0, 10, 0.95, 2)
+    testing(114, 50, 0.44, 4)
   }
 }
 

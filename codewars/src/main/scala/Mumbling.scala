@@ -19,5 +19,6 @@ object Mumbling {
   }
 }
 
+//Examples with indices usage, which avoid recursion and counter manipulation
 //    s.indices.map(i => s(i).toLower.toString * (i+1) capitalize).mkString("-")
 //    s.zipWithIndex.map{ case (c, i) => c.toUpper + c.toLower.toString * i }.mkString("-")

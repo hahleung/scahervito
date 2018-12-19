@@ -3,9 +3,9 @@ object CountPositivesSumNegatives {
     def go(integers: Array[Int], countPositives: Int, sumNegatives: Int): (Int, Int) =
       integers.headOption match {
         case None => (countPositives, sumNegatives)
-        case Some(head) if (head < 0) => go(integers.tail, countPositives, sumNegatives + head)
-        case Some(head) if (head > 0) => go(integers.tail, countPositives + 1, sumNegatives)
-        case Some(head) if (head == 0) => go(integers.tail, countPositives, sumNegatives)
+        case Some(head) if head < 0 => go(integers.tail, countPositives, sumNegatives + head)
+        case Some(head) if head > 0 => go(integers.tail, countPositives + 1, sumNegatives)
+        case Some(head) if head == 0 => go(integers.tail, countPositives, sumNegatives)
       }
 
     go(integers, 0, 0)

@@ -40,7 +40,7 @@ class FindTheSmallestTest extends FlatSpec {
 
 object FindTheSmallestTest {
   private def testing(n: Long, exp: Array[Long]): Unit = {
-    val act = SquareSumSimple.smallest(n)
+    val act = FindTheSmallest.smallest(n)
     val actual: String = act.mkString(", ")
     val expect: String = exp.mkString(", ")
     println("Testing " + n)

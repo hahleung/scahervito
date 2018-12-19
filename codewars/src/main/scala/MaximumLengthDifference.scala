@@ -21,21 +21,23 @@ object MaximumLengthDifference {
   }
 
   private def getMinAndMax(list: List[String]): (Int, Int) = {
-    val firstElement = list.head.size
+    val firstElement = list.head.length
     val seed = (firstElement, firstElement)
     val foldingFunction = (minMax: (Int, Int), element: String) =>
-      (element.size min minMax._1, element.size max minMax._2)
+      (element.length min minMax._1, element.length max minMax._2)
 
     list.foldLeft(seed)(foldingFunction)
   }
 }
 
+//This one looks concise and elegant, but performances are really doubtful
+//It's generating all the differences and take the max, unsuitable for huge a1, a2
 //object Kata {
-//
 //  def mxdiflg(a1: List[String], a2: List[String]): Int =
 //    (for { x <- a1; y <- a2 } yield (y.size - x.size).abs) match { case Nil => -1 case l => l.max }
 //}
 
+//Same comment
 //object Kata {
 //  def mxdiflg(a1: List[String], a2: List[String]): Int = {
 //    if (a1.isEmpty || a2.isEmpty) return -1
