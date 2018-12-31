@@ -37,11 +37,12 @@ import SomeEgyptianFractionsTest._
 
 class SomeEgyptianFractionsTest extends FlatSpec {
   it should "pass basic tests" in {
-    testing("3", "4", "[1/2, 1/4]");
-    testing("12", "4", "[3]");
-    testing("0", "2", "[]");
-    testing("75", "75", "[1]");
-
+    testing("5", "20", "[1/4]")
+    testing("9", "6", "[1, 1/2]")
+    testing("3", "4", "[1/2, 1/4]")
+    testing("12", "4", "[3]")
+    testing("0", "2", "[]")
+    testing("75", "75", "[1]")
   }
 }
 
