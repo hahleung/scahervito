@@ -5,6 +5,7 @@ import org.scalatest.Assertions._
 
 import CodingWithSquaredStringsTest._
 
+//(cd codewars; sbt "test:testOnly *CodingWithSquaredStringsTest")
 class CodingWithSquaredStringsTest extends FlatSpec {
   val data1 = "What do you remember? When I looked at his streaky glasses, I wanted " +
     "to leave him. And before that? He stole those cherries for me at midnight. We were walking " +
@@ -23,8 +24,16 @@ class CodingWithSquaredStringsTest extends FlatSpec {
 
   it should "pass basic tests decode" in {
     testing(CodingWithSquaredStrings.decode(data1Sol), data1)
-
   }
+
+  it should "edge case - code empty string" in {
+    testing(CodingWithSquaredStrings.code(""), "")
+  }
+
+  it should "edge case - decode empty string" in {
+    testing(CodingWithSquaredStrings.decode(""), "")
+  }
+
 }
 
 object CodingWithSquaredStringsTest {
