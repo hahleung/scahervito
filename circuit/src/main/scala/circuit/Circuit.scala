@@ -9,7 +9,6 @@ sealed trait Circuit {
   def resistance: Float
 }
 
-// TODO: For Parallel and Series
 sealed trait ComplexCircuit {
   val circuits: Seq[Circuit]
 }
