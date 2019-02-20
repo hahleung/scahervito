@@ -4,15 +4,15 @@ import org.scalatest._
 
 class SeriesCircuitTest extends FlatSpec {
   it should "instantiate a [SeriesCircuit]" in {
-    val seriesCircuit = new SeriesCircuit()
+    val seriesCircuit = SeriesCircuit()
 
-    assert(seriesCircuit.resistanceValue === 0F)
+    assert(seriesCircuit.resistance === 0F)
   }
 
   it should "sum the resistances of the circuit" in {
-    val resistance = new Resistance(12)
-    val seriesCircuit = new SeriesCircuit().copy(circuits = List(resistance, resistance))
+    val resistance = Resistance(12)
+    val seriesCircuit = SeriesCircuit(List(resistance, resistance))
 
-    assert(seriesCircuit.resistanceValue === 24F)
+    assert(seriesCircuit.resistance === 24F)
   }
 }
