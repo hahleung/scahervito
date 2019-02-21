@@ -3,7 +3,9 @@ package circuit
 import io.circe._
 import io.circe.generic.semiauto._
 
-case class FullCircuit(id: String, v: Int, definition: Circuit) {}
+case class FullCircuit(id: String, v: Int, definition: Circuit) {
+  def resistance: Float = definition.resistance
+}
 
 //From: https://github.com/circe/circe/issues/561
 object FullCircuit {

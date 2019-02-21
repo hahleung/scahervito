@@ -1,0 +1,52 @@
+{
+  "id": "C101",
+  "v": 5,
+  "definition": {
+    "type": "S",
+    "circuits": [
+      {
+        "type": "R",
+        "value": 1
+      },
+      {
+        "type": "P",
+        "circuits": [
+          {
+            "type": "R",
+            "value": 2
+          },
+          {
+            "type": "R",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "type": "R",
+        "value": 1
+      },
+      {
+        "type": "P",
+        "circuits": [
+          {
+            "type": "S",
+            "circuits": [
+              {
+                "type": "R",
+                "value": 5
+              },
+              {
+                "type": "R",
+                "value": 6
+              }
+            ]
+          },
+          {
+            "type": "R",
+            "value": 7
+          }
+        ]
+      }
+    ]
+  }
+}

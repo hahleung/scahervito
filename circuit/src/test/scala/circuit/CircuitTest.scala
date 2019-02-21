@@ -17,6 +17,7 @@ class CircuitTest extends FlatSpec {
 
     val expectedCircuit = Resistance(42)
     assert(circuit === Right(expectedCircuit))
+    assert(circuit.map(_.resistance) === Right(42F))
   }
 
   it should "parse a [Circuit] of type [ParallelCircuit]" in {
@@ -27,7 +28,7 @@ class CircuitTest extends FlatSpec {
         "circuits": [
           {
             "type": "R",
-            "value": 2
+            "value": 3
           },
           {
             "type": "R",
@@ -39,8 +40,9 @@ class CircuitTest extends FlatSpec {
 
     val circuit = parser.decode[Circuit](rawCircuit)
 
-    val expectedCircuit = ParallelCircuit(List(Resistance(2), Resistance(3)))
+    val expectedCircuit = ParallelCircuit(List(Resistance(3), Resistance(3)))
     assert(circuit === Right(expectedCircuit))
+    assert(circuit.map(_.resistance) === Right(1.5F))
   }
 
   it should "parse a [Circuit] of type [SeriesCircuit]" in {
@@ -65,5 +67,6 @@ class CircuitTest extends FlatSpec {
 
     val expectedCircuit = SeriesCircuit(List(Resistance(5), Resistance(6)))
     assert(circuit === Right(expectedCircuit))
+    assert(circuit.map(_.resistance) === Right(11F))
   }
 }
