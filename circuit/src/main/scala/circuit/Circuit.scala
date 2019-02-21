@@ -1,6 +1,5 @@
 package circuit
 
-import circuit.CircuitType._
 import circuit.ParallelCircuit._
 import circuit.Resistance._
 import circuit.SeriesCircuit._
@@ -8,8 +7,6 @@ import io.circe.generic.semiauto._
 import io.circe.{Decoder, Encoder}
 
 sealed trait Circuit {
-  def circuitType: CircuitType
-
   def resistance: Float
 }
 
@@ -18,14 +15,10 @@ sealed trait ComplexCircuit {
 }
 
 final case class Resistance(value: Int) extends Circuit {
-  def circuitType: CircuitType = CircuitType.Resistance
-
   def resistance: Float = value.toFloat
 }
 
 final case class ParallelCircuit(override val circuits: Seq[Circuit]) extends Circuit with ComplexCircuit {
-  def circuitType: CircuitType = CircuitType.Parallel
-
   def resistance: Float = circuits.length match {
     case 0 => 0F
     case _ => 1F / circuits.foldLeft(0F)(_ + 1F / _.resistance)
@@ -33,8 +26,6 @@ final case class ParallelCircuit(override val circuits: Seq[Circuit]) extends Ci
 }
 
 final case class SeriesCircuit(override val circuits: Seq[Circuit]) extends Circuit with ComplexCircuit {
-  def circuitType: CircuitType = CircuitType.Series
-
   def resistance: Float = circuits.foldLeft(0F)(_ + _.resistance)
 }
 
