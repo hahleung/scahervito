@@ -1,17 +1,17 @@
 package circuit
 
+import io.circe._
 import org.scalatest._
-import io.circe._, io.circe.parser._
 
 class FullCircuitTest extends FlatSpec {
-  it should "instantiate a simple [FullCircuit]" in {
+  it should "parse a simple [Circuit]" in {
     val rawFullCircuit: String =
       """
       {
         "id": "C101",
         "v": 5,
         "definition": {
-          "type": "S",
+          "type": "R",
           "value": 42
         }
       }
@@ -19,6 +19,7 @@ class FullCircuitTest extends FlatSpec {
 
     val fullCircuit = parser.decode[FullCircuit](rawFullCircuit)
 
-    assert(fullCircuit === Right(FullCircuit("C101", 5)))
+    val expectedCircuit = Resistance(42)
+    assert(fullCircuit === Right(FullCircuit("C101", 5, expectedCircuit)))
   }
 }
