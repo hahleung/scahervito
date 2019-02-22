@@ -16,7 +16,7 @@ object Sample {
   }
 
   object Circuit {
-    val complex = loadJson[FullCircuit]("src/test/scala/samples/circuit/complex.json")
+    val complex: FullCircuit = loadJson[FullCircuit]("/samples/circuit/complex.json")
   }
 
 }
