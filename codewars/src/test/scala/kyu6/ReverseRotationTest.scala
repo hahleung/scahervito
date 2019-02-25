@@ -1,7 +1,8 @@
-import org.scalatest._
-import org.scalatest.Assertions._
+package kyu6
 
-import ReverseRotationTest._
+import kyu6.ReverseRotationTest._
+import org.scalatest.Assertions._
+import org.scalatest._
 
 //(cd codewars; sbt "test:testOnly *ReverseRotationTest")
 class ReverseRotationTest extends FlatSpec {

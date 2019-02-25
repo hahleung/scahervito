@@ -1,3 +1,5 @@
+package kyu7
+
 import org.scalatest._
 
 //(cd codewars; sbt "test:testOnly *ExesAndOhsTest")

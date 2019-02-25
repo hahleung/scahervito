@@ -1,3 +1,5 @@
+package kyu8
+
 // You can test using ScalaTest (http://www.scalatest.org/).
 import org.scalatest._
 

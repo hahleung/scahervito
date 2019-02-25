@@ -1,6 +1,8 @@
+package kyu7
+
 import org.scalatest.FunSpec
 
-//(cd codewars; sbt "test:testOnly *MumblingTest")
+//(cd codewars; sbt "test:testOnly *kyu7.MumblingTest")
 class MumblingTest extends FunSpec {
   describe("Codewars.accum") {
     it("should work with example tests") {

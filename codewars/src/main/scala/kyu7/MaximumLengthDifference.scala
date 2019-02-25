@@ -1,3 +1,5 @@
+package kyu7
+
 object MaximumLengthDifference {
   // First iteration was made of these functions:
   // def getSortedList(list: List[String]): List[String] = list.sortBy(a => a.size)
@@ -29,20 +31,3 @@ object MaximumLengthDifference {
     list.foldLeft(seed)(foldingFunction)
   }
 }
-
-//This one looks concise and elegant, but performances are really doubtful
-//It's generating all the differences and take the max, unsuitable for huge a1, a2
-//object Kata {
-//  def mxdiflg(a1: List[String], a2: List[String]): Int =
-//    (for { x <- a1; y <- a2 } yield (y.size - x.size).abs) match { case Nil => -1 case l => l.max }
-//}
-
-//Same comment
-//object Kata {
-//  def mxdiflg(a1: List[String], a2: List[String]): Int = {
-//    if (a1.isEmpty || a2.isEmpty) return -1
-//
-//    val List(l1, l2) = List(a1, a2).map(_.map(_.length))
-//    List(l1.max - l2.min, l1.min - l2.max).map(Math.abs(_)).max
-//  }
-//}

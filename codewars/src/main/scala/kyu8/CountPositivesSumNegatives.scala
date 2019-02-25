@@ -1,3 +1,5 @@
+package kyu8
+
 object CountPositivesSumNegatives {
   def countPositivesSumNegatives(integers: Array[Int]): (Int, Int) = {
     def go(integers: Array[Int], countPositives: Int, sumNegatives: Int): (Int, Int) =

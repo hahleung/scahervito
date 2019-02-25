@@ -1,6 +1,8 @@
+package kyu7
+
 import org.scalatest._
 
-// (cd codewars; sbt "test:testOnly *SortArrayTest")
+// (cd codewars; sbt "test:testOnly *kyu7.SortArrayTest")
 class SortArrayTest extends FlatSpec with Matchers {
   val tests = List(
     (Array("i", "to", "beg", "life"), Array("beg", "life", "i", "to")),

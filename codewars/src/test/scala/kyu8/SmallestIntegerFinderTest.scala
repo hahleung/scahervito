@@ -1,3 +1,5 @@
+package kyu8
+
 import org.scalatest._
 
 class SmallestIntegerFinderTest extends FunSpec {

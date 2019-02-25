@@ -1,3 +1,5 @@
+package kyu8
+
 object RemovingElements {
   def removeEveryOther[T](list: List[T]): List[T] = {
     list.zipWithIndex.filter(_._2 % 2 == 0).map(_._1)

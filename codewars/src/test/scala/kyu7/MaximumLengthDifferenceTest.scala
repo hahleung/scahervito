@@ -1,6 +1,8 @@
+package kyu7
+
 import org.scalatest._
 
-// (cd codewars; sbt "test:testOnly *MaximumLengthDifferenceTest")
+// (cd codewars; sbt "test:testOnly *kyu7.MaximumLengthDifferenceTest")
 class MaximumLengthDifferenceTest extends FlatSpec with Matchers {
   val a1 = List("hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz")
   val a2 = List("cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww")

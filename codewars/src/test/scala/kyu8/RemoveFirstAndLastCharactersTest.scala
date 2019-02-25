@@ -1,7 +1,10 @@
-import org.scalatest._, prop._
+package kyu8
+
+import org.scalatest._
+import org.scalatest.prop._
 
 class RemoveFirstAndLastCharactersTest extends FunSuite with PropertyChecks with Matchers {
-  import RemoveFirstAndLastCharacters.removeChars
+  import kyu8.RemoveFirstAndLastCharacters.removeChars
 
   val fixedTests = Table[String, String](
     ("s", "expected"),

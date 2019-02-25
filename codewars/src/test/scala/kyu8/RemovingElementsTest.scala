@@ -1,3 +1,5 @@
+package kyu8
+
 import org.scalatest._
 
 class RemovingElementsTest extends FlatSpec with Matchers {

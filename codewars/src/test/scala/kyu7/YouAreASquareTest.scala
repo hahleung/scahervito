@@ -1,7 +1,9 @@
+package kyu7
+
 // You can test using ScalaTest (http://www.scalatest.org/).
 import org.scalatest._
 
-//(cd codewars; sbt "test:testOnly *YouAreASquareTest")
+//(cd codewars; sbt "test:testOnly *kyu7.YouAreASquareTest")
 class YouAreASquareTest extends FlatSpec with Matchers {
   val tests = List(
     (-1, false),

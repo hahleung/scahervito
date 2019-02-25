@@ -1,3 +1,5 @@
+package kyu8
+
 object RemoveFirstAndLastCharacters {
   def removeChars(string: String): String = {
     string.substring(1, string.length - 1)

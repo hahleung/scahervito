@@ -1,6 +1,8 @@
-import org.scalatest._
+package kyu6
+
+import kyu6.RectangleIntoSquaresTest._
 import org.scalatest.Assertions._
-import RectangleIntoSquaresTest._
+import org.scalatest._
 
 //(cd codewars; sbt "test:testOnly *RectangleIntoSquaresTest")
 class RectangleIntoSquaresTest extends FlatSpec {

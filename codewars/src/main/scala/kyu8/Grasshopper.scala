@@ -1,3 +1,5 @@
+package kyu8
+
 object Grasshopper {
   def summation(n: Int): Int = {
     def go(n: Int, acc: Int): Int =
