@@ -1,6 +1,6 @@
-package com.example.app
+package com.shortener.app
 
-import com.example.app.controllers.ValidationForm
+import com.shortener.app.controllers.ValidationForm
 import org.scalatra._
 import org.scalatra.forms.FormSupport
 import org.scalatra.forms.{mapping, label, text, required, maxlength, optional, pattern, number, list}

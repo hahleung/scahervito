@@ -1,4 +1,4 @@
-package com.example.app
+package com.shortener.app
 
 import org.scalatra.test.scalatest._
 
