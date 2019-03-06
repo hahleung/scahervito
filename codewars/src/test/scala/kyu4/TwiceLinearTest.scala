@@ -7,18 +7,28 @@ import TwiceLinearTest._
 class TwiceLinearTest extends FlatSpec {
   it should "pass basic tests" in {
     testing(50, 175)
-//    testing(10, 22)
-//    testing(20, 57)
-//    testing(30, 91)
+    testing(10, 22)
+    testing(20, 57)
+    testing(30, 91)
+    testing(6000, 80914)
   }
 }
 
 object TwiceLinearTest {
   private def testing(n: Int, expect: Int): Unit = {
-    println("Testing: " + n)
+    val t1 = System.currentTimeMillis
+    println("\nTesting: " + n)
     val actual: Int = TwiceLinear.dblLinear(n)
+    val t2 = System.currentTimeMillis
+    println((t2 - t1) + " msecs")
     println("Actual: " + actual)
     println("Expect: " + expect)
     assertResult(expect){actual}
   }
 }
+
+//Benchmark
+//Testing: 6000
+//2011 msecs
+//Actual: 80914
+//Expect: 80914
