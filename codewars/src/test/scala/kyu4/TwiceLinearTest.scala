@@ -28,7 +28,23 @@ object TwiceLinearTest {
 }
 
 //Benchmark
+//val newList = t ++ List(h * 2 + 1, h * 3 + 1)
+//doIteration(newList.distinct.sorted, index - 1)
 //Testing: 6000
 //2011 msecs
+//Actual: 80914
+//Expect: 80914
+
+//val newList = (2 * h + 1) :: (3 * h + 1) :: t
+//doIteration(newList.distinct.sorted, index - 1)
+//Testing: 6000
+//1755 msecs
+//Actual: 80914
+//Expect: 80914
+
+//val newSortedSet = sortedSet.tail + (2 * sortedSet.head + 1) + (3 * sortedSet.head + 1)
+//doIteration(newSortedSet, index - 1)
+//Testing: 6000
+//113 msecs
 //Actual: 80914
 //Expect: 80914
