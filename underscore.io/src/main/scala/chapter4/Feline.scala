@@ -1,5 +1,6 @@
 // scala FP/underscore/chapter4/Feline.scala
 // p90
+package chapter4
 
 trait Feline {
   def name: String

@@ -1,4 +1,5 @@
 // scala FP/underscore/chapter3/Counter.scala
+package chapter3
 
 class Counter(val count: Int = 21) {
   def inc = new Counter(count + 1)

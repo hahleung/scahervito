@@ -1,4 +1,4 @@
-import scala.reflect.io.File
+package chapter3
 // scala FP/underscore/chapter3/Director.scala
 
 //class Director(val firstName: String, val lastName: String, val yearOfBirth: Int) {

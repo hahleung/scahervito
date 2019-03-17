@@ -1,6 +1,8 @@
 // scala underscore/chapter4/Shape.scala
 // p91
 
+package chapter4
+
 trait Shape {
   def sides: Int
   def perimeter: Double

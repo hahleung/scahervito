@@ -1,4 +1,5 @@
 // scala FP/underscore/chapter3/Counter.scala
+package chapter3
 
 class Person(val firstName: String, val lastName: String)
 

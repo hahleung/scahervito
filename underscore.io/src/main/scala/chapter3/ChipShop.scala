@@ -1,4 +1,5 @@
 // scala FP/underscore/chapter3/ChipShop.scala
+package chapter3
 
 case class Cat(name: String, colour: String, food: String)
 
