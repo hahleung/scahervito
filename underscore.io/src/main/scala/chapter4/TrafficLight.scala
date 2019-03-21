@@ -6,18 +6,10 @@ final case object Red extends TrafficLight
 final case object Green extends TrafficLight
 final case object Orange extends TrafficLight
 
-sealed trait Calculator
-final case class Success(result: Int) extends Calculator
-final case class Failure(error: String) extends Calculator
-
-// Product type pattern
-trait BottledWater {
-  def size: Int
-  def source: Source
-  def carbonated: Boolean
+object Next {
+  def next(tl: TrafficLight): TrafficLight = tl match {
+    case Red => Green
+    case Green => Orange
+    case Orange => Red
+  }
 }
-
-sealed trait Source
-final case object Tap extends Source
-final case object Well extends Source
-final case object Spring extends Source
