@@ -1,32 +1,51 @@
-case class Toto(x: Int, y: Int) {}
+case class Toto(x: Int, y: Int, z: Option[Int] = None) {}
 
-case class Totos(nToto: Option[Toto] = None, cToto: Option[Toto] = None, gToto: Option[Toto] = None) {
-  def all = List(nToto, cToto, gToto)
-}
+case class Totos(nToto: Option[Toto] = None, pToto: Option[Toto] = None, gToto: Option[Toto] = None) {}
 
 def wow(a: Int, b: Int): Int = {
   println("jesus")
-//  Thread.sleep(5000)
+  //  Thread.sleep(5000)
   a + 32 * b
 }
 
-val totos = List(Toto(1, 2), Toto(1, 2), Toto(4, 5), Toto(1, 2))
+//val totos = List(Toto(1, 2), Toto(1, 2), Toto(4, 5), Toto(1, 2))
+//
+//val slowTotos = totos.map(toto => wow(toto.x, toto.y))
+//println(slowTotos)
 
-val slowTotos = totos.map(toto => wow(toto.x, toto.y))
-println(slowTotos)
+val totos = Totos(Some(Toto(1, 2)), Some(Toto(1, 2)), Some(Toto(2, 4)))
+val totosMap = Map("n" -> totos.nToto, "p" -> totos.pToto, "g" -> totos.gToto)
 
-val fastTotos = totos.foldLeft((List.empty[Int], Map.empty[(Int, Int), Int])) { (x, toto) =>
-  x._2.contains((toto.x, toto.y)) match {
-    case true  =>
-      val result = x._2.getOrElse((toto.x, toto.y), 0)
-      (result :: x._1, x._2)
-    case false =>
-      val result = wow(toto.x, toto.y)
-      (result :: x._1, x._2 + ((toto.x, toto.y) -> result))
+def newLocalTotos(key: String, value: Option[Int], totos: Totos): Totos = key match {
+  case "n" => totos.copy(nToto = totos.nToto.map(_.copy(z = value)))
+  case "p" => totos.copy(pToto = totos.pToto.map(_.copy(z = value)))
+  case "g" => totos.copy(gToto = totos.gToto.map(_.copy(z = value)))
+}
 
+val fastTotos = totosMap.foldLeft((totos, Map.empty[(Int, Int), Option[Int]])) { (totosAndCache, totoDict) =>
+  val primaryKey = totoDict._1
+  val maybeToto: Option[Toto] = totoDict._2
+  val enhancedTotos = totosAndCache._1
+  val localCache = totosAndCache._2
+
+  maybeToto match {
+    case None       => (enhancedTotos, localCache)
+    case Some(toto) =>
+      val totoKey = (toto.x, toto.y)
+      localCache.contains(totoKey) match {
+        case true  =>
+          val result = localCache.getOrElse(totoKey, None)
+          (newLocalTotos(primaryKey, result, enhancedTotos), localCache)
+        case false =>
+          val result = Some(wow(toto.x, toto.y))
+          val newLocalCache = localCache + (totoKey -> result)
+          (newLocalTotos(primaryKey, result, enhancedTotos), newLocalCache)
+
+      }
   }
 }
-println(fastTotos._1.reverse)
+
+println(fastTotos)
 
 
 //val x = Map("x" -> (1, 2), "y" -> (1, 2), "z" -> (3, 4))
